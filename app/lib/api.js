@@ -46,38 +46,58 @@ exports.loadAPIBySequence = function (ex, counter){
 	if(isUpdate != "" ){
 		last_updated = isUpdate.updated;
 	}
-	
+	  
 	 var url = api['url']+"&last_updated="+last_updated;
 	 console.log(url);
-	 var client = Ti.Network.createHTTPClient({
-	     // function called when the response data is available
-	     onload : function(e) {
-	     	  
-	       var res = JSON.parse(this.responseText);
-	       if(res.status == "Success" || res.status == "success"){
-			/**load new set of category from API**/
-	       	var arr = res.data;
-	       //	console.log(res);
+	 var _result = contactServer(url);    
+	 _result.onload = function(e) {  
+	 	var res = JSON.parse(this.responseText);
+	 	if(res.status == "Success" || res.status == "success"){
+	 		/**load new set of category from API**/
+	 		var arr = res.data;
+	    	//	console.log(res);
 	        //model.saveArray(arr);
-	       }
-			Ti.App.fireEvent('app:update_loading_text', {text: APILoadingList[counter]['model']+" loading..."});
-			checker.updateModule(APILoadingList[counter]['checkId'],APILoadingList[counter]['model'], Common.now());
+	   	}
+		Ti.App.fireEvent('app:update_loading_text', {text: APILoadingList[counter]['model']+" loading..."});
+		checker.updateModule(APILoadingList[counter]['checkId'],APILoadingList[counter]['model'], Common.now());
 			
-			counter++;
-			API.loadAPIBySequence(ex, counter);
-	     },
-	     // function called when an error occurs, including a timeout
-	     onerror : function(e) {
-	     	console.log("API getCategoryList fail, skip sync with server");
-	     	API.loadAPIBySequence(ex, counter);
-	     },
-	     timeout : 7000  // in milliseconds
-	 });
-	 if(Ti.Platform.osname == "android"){
+		counter++;
+		API.loadAPIBySequence(ex, counter);
+	 };
+	 
+	 // function called when an error occurs, including a timeout
+	 _result.onerror = function(e) { 
+	 	console.log("API getCategoryList fail, skip sync with server");
+	    API.loadAPIBySequence(ex, counter);
+	 }; 
+};
+
+
+/*********************
+ * Private function***
+ *********************/
+function contactServer(url) { 
+	var client = Ti.Network.createHTTPClient({
+		timeout : 5000
+	});
+	client.open("GET", url);
+	client.send(); 
+	return client;
+};
+
+function contactServerByPost(url,records) { 
+	var client = Ti.Network.createHTTPClient({
+		timeout : 5000
+	});
+	if(OS_ANDROID){
 	 	client.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); 
 	 }
- 
-	 client.open("POST", url);
-	 // Send the request.
-	client.send();
+	client.open("POST", url);
+	client.send({list: JSON.stringify(records)}); 
+	return client;
+};
+
+function onErrorCallback(e) { 
+	// Handle your errors in here
+	COMMON.createAlert("Error", e);
 };

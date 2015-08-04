@@ -1,8 +1,8 @@
-#appname: framework
-#publisher: HatsuneMiku
-#url: http://
-#image: appicon.png
-#appid: com.geonn.framework
-#desc: undefined
-#type: ipad
-#guid: 11d4c47f-36cc-447d-9aaa-2b957722983e
+#appname:framework
+#publisher:Geonn Solution
+#url:http://
+#image:appicon.png
+#appid:com.geonn.framework
+#desc:mobile framework of Geonn Solution
+#type:ipad
+#guid:11d4c47f-36cc-447d-9aaa-2b957722983e
