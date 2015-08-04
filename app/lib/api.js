@@ -49,7 +49,7 @@ exports.loadAPIBySequence = function (ex, counter){
 	  
 	 var url = api['url']+"&last_updated="+last_updated;
 	 console.log(url);
-	 var _result = contactServer(url);    
+	 var _result = contactServerByGet(url);    
 	 _result.onload = function(e) {  
 	 	var res = JSON.parse(this.responseText);
 	 	if(res.status == "Success" || res.status == "success"){
@@ -76,7 +76,7 @@ exports.loadAPIBySequence = function (ex, counter){
 /*********************
  * Private function***
  *********************/
-function contactServer(url) { 
+function contactServerByGet(url) { 
 	var client = Ti.Network.createHTTPClient({
 		timeout : 5000
 	});
