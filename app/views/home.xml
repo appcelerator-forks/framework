@@ -1,0 +1,19 @@
+<Alloy>
+	<Window id="wrapper" class="vert" title="Home">
+		<!-- 
+		Menu Item to open the bookmarks view
+		-->
+		<Menu id="menu" platform="android">
+			<!-- 
+				Adding the SearchView to the ActionBar via the Menu feature. Leveraging the standard Android Resource for the search
+				icon. Uses shared onChange function with iOS to update listView search text.
+			-->
+            
+            <!-- Android Menu item for accessing the Bookmarks view-->
+            <MenuItem id="bookmarkBtn" title="Bookmarks" icon="/images/ic_action_action_bookmark.png" showAsAction="Ti.Android.SHOW_AS_ACTION_IF_ROOM"/>
+        </Menu>
+        <View class="wfill hfill">
+        	<Label>Homepage</Label>
+        </View>
+    </Window>
+</Alloy>
