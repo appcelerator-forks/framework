@@ -5,7 +5,7 @@
     <version>1.0</version>
     <publisher>HatsuneMiku</publisher>
     <url>http://</url>
-    <description/>
+    <description>undefined</description>
     <copyright>2015 by HatsuneMiku</copyright>
     <icon>appicon.png</icon>
     <fullscreen>false</fullscreen>
@@ -38,7 +38,11 @@
             </dict>
         </plist>
     </ios>
-    <android xmlns:android="http://schemas.android.com/apk/res/android"/>
+    <android xmlns:android="http://schemas.android.com/apk/res/android">
+    	<manifest>
+    		<application android:theme="@style/Theme.CustomActionBar"/>
+    	</manifest>
+    </android>
     <mobileweb>
         <precache/>
         <splash>
