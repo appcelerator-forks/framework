@@ -1,17 +1,16 @@
-// The contents of this file will be executed before any of
-// your view controllers are ever executed, including the index.
-// You have access to all functionality on the `Alloy` namespace.
-//
-// This is a great place to do any initialization for your app
-// or create any global variables/functions that you'd like to
-// make available throughout your app. You can easily make things
-// accessible globally by attaching them to the `Alloy.Globals`
-// object. For example:
-//
-// Alloy.Globals.someGlobalFunction = function(){};
+/*** Mobile Framework by GEONN SOLUTION 1.0***/
+//Global function and variable declaration
+
 var _ = require('underscore')._;
 var API = require('api');
-var Common = require('common'); 
+var COMMON = require('common'); 
+var PUSH = require('push');
 var DBVersionControl = require('DBVersionControl');
 
 DBVersionControl.checkAndUpdate();
+
+//register for push
+//PUSH.registerPush();
+//if (OS_IOS) {
+//	Titanium.UI.iPhone.setAppBadge("0");
+//}

@@ -50,6 +50,7 @@ exports.openWindow = _.throttle(openWindow, 500, true);
 exports.removeAllChildren = _.debounce(removeAllChildren, 0, true);
 exports.createAlert = _.throttle(createAlert, 500, true);
 
+/***Date Time related and format***/
 exports.now = function(){
 	var today = new Date();
 	var dd = today.getDate();
@@ -75,4 +76,32 @@ exports.now = function(){
 	
 	datetime = yyyy+'-'+mm+'-'+dd + " "+ hours+":"+minutes+":"+sec;
 	return datetime ;
+};
+
+exports.monthFormat = function(date){
+	var monthNames = [
+        "January", "February", "March",
+        "April", "May", "June", "July",
+        "August", "September", "October",
+        "November", "December"
+    ];
+ 
+    var day = date.split('-'); 
+    month = parseInt(day[1]) -1; 
+    return day[2]+" "+ monthNames[month]+" "+ day[0];
+};
+
+exports.timeFormat = function(datetime){
+	var timeStamp = datetime.split(" ");  
+	var newFormat;
+	var ampm = "am";
+	var date = timeStamp[0].split("-");  
+	var time = timeStamp[1].split(":");  
+	if(time[0] > 12){
+		ampm = "pm";
+		time[0] = time[0] - 12;
+	}
+	
+	newFormat = date[2]+"/"+date[1]+"/"+date[0] + " "+ time[0]+":"+time[1]+ " "+ ampm;
+	return newFormat;
 };

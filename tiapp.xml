@@ -3,10 +3,10 @@
     <id>com.geonn.framework</id>
     <name>framework</name>
     <version>1.0</version>
-    <publisher>HatsuneMiku</publisher>
+    <publisher>Geonn Solution</publisher>
     <url>http://</url>
-    <description>undefined</description>
-    <copyright>2015 by HatsuneMiku</copyright>
+    <description>mobile framework of Geonn Solution</description>
+    <copyright>2015 by Geonn Solution</copyright>
     <icon>appicon.png</icon>
     <fullscreen>false</fullscreen>
     <navbar-hidden>false</navbar-hidden>
