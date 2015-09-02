@@ -30,6 +30,24 @@ var APILoadingList = [
 **** API FUNCTION*****
 **********************/
 
+// call API by post method
+exports.callByPost = function(e, onload, onerror){
+	var deviceToken = Ti.App.Properties.getString('deviceToken');
+	if(deviceToken != ""){  
+		var url = eval(e.url);
+		var _result = contactServerByPost(url, e.params || {});   
+		_result.onload = function(e) { 
+			console.log('success');
+			onload(this.responseText); 
+		};
+		
+		_result.onerror = function(e) { 
+			console.log("onerror");
+			onerror();
+		};
+	}
+};
+
 exports.loadAPIBySequence = function (ex, counter){ 
 	counter = (typeof counter == "undefined")?0:counter;
 	if(counter >= APILoadingList.length){
@@ -59,7 +77,7 @@ exports.loadAPIBySequence = function (ex, counter){
 	        //model.saveArray(arr);
 	   	}
 		Ti.App.fireEvent('app:update_loading_text', {text: APILoadingList[counter]['model']+" loading..."});
-		checker.updateModule(APILoadingList[counter]['checkId'],APILoadingList[counter]['model'], Common.now());
+		checker.updateModule(APILoadingList[counter]['checkId'],APILoadingList[counter]['model'], COMMON.now());
 			
 		counter++;
 		API.loadAPIBySequence(ex, counter);

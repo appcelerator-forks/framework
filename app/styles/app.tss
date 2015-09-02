@@ -236,3 +236,7 @@ overrode the settings with other TSS, XML, or JS settings:
 	width: Ti.UI.FILL,
 	height: 1	
 },
+
+".bold":{
+	font: { fontWeight: 'bold'}
+},

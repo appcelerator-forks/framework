@@ -4,10 +4,12 @@
 var _ = require('underscore')._;
 var API = require('api');
 var COMMON = require('common'); 
-var PUSH = require('push');
+//var PUSH = require('push');
 var DBVersionControl = require('DBVersionControl');
-
 DBVersionControl.checkAndUpdate();
+
+var AppVersionControl = require('AppVersionControl');
+//AppVersionControl.checkAndUpdate();
 
 //register for push
 //PUSH.registerPush();

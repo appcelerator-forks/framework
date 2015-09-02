@@ -48,13 +48,15 @@ function loadingViewFinish(){
 			$.nav.open();
 		}else{
 			$.index.getView().open();
-		} 
-		init();
+		}
 		loadingView = null;
 	});
 }
 
 function init(){
+	
 }
+
+init();
 
 Ti.App.addEventListener('app:loadingViewFinish', loadingViewFinish);

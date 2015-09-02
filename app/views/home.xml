@@ -12,8 +12,19 @@
             <!-- Android Menu item for accessing the Bookmarks view-->
             <MenuItem id="bookmarkBtn" title="Bookmarks" icon="/images/ic_action_action_bookmark.png" showAsAction="Ti.Android.SHOW_AS_ACTION_IF_ROOM"/>
         </Menu>
-        <View class="wfill hfill">
-        	<Label>Homepage</Label>
-        </View>
+        <ScrollView class="wfill hfill vert" contentHeight="Ti.UI.SIZE" contentWidth="Ti.UI.FILL" id="container">
+        	<ScrollView id="crop" height="200" width="200" contentWidth="640" contentHeight="Ti.UI.SIZE" platform="ios">
+		    	<ImageView width="640" height="auto" id="image" image="/images/11888032_n.jpg" />
+		    </ScrollView>
+			<!-- -->
+			<View id="crop" width="200" height="200" platform="android">
+	        	<ScrollView scrollType="horizontal" height="Ti.UI.SIZE" width="200" contentWidth="Ti.UI.SIZE" contentHeight="Ti.UI.SIZE">
+	        		<ScrollView scrollType="vertical" height="200" width="Ti.UI.SIZE" contentWidth="Ti.UI.SIZE" contentHeight="Ti.UI.SIZE">
+				    	<ImageView class="" width="640" height="auto" id="image" image="/images/11888032_n.jpg" />
+				    </ScrollView>
+				</ScrollView>
+			</View>
+			<Button class="hsize wsize" onClick="cropImage">Cropped</Button>
+        </ScrollView>
     </Window>
 </Alloy>
